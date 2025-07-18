@@ -113,8 +113,8 @@
 }
 
 const canvasMetrics = {
-    x:0,
-    y:0
+    x:undefined,
+    y:undefined
 }
 
     const flags = {
@@ -297,9 +297,10 @@ context.fillStyle = 'rgba(0, 0, 0, 0)'
 
 function fillField() {
 
+    if (canvasMetrics.x){
     context.clearRect(canvasMetrics.x - 30,
     canvasMetrics.y - 30,
-    60, 60)
+    60, 60)}
 
     if (cursor.x > itemTrigger.x && 
     cursor.y > itemTrigger.y &&
