@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- preloading -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,133 +88,12 @@
 <body>
     <!-- <canvas></canvas> -->
     <h1 class="task">find the lock</h1>
-    <canvas class="mini-game" style="display: none;"></canvas>
+    <canvas class="mini-game"></canvas>
     <!-- <img src="../../pngtree-salon-logo-png-image_4004444.png" alt="" > -->
     <!-- <video class="item" src="./assets/bag.webm" muted autoplay loop></video> -->
 </body>
 
 </html>
-<!-- <script>
-
-    let canvas = document.querySelector('canvas')
-    let context = canvas.getContext('2d')
-
-    function setCanvasSize() {
-
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
-
-    } setCanvasSize()
-
-    window.addEventListener('resize', () => {
-        setCanvasSize()
-        setWave()
-    })
-
-    canvas.addEventListener('mousemove', drawCircle)
-
-    let mousex, mousey
-
-    function drawCircle(e) {
-
-        let rect = canvas.getBoundingClientRect()
-
-        mousex = e.clientX - rect.left
-        mousey = e.clientY - rect.top
-
-        console.log(mousex, mousey)
-    }
-
-
-
-
-    let start
-    let L = 200 / 3.14
-
-    function setWave() {
-
-        y = canvas.height / 2
-        start = canvas.width / 2
-
-    }
-
-    setWave()
-
-    let time = 0
-
-    console.log(start)
-
-     context.fillStyle = 'greenyellow'
-
-
-    function s() {
-// при ресайзе канвас автоматически очищает холст 
-// и те пиксели которые были становятя черные
-// поседняя операция фил заливает весь канвас 
-// и при ресайзе он очистится и весь фил 
-// т е его зона - станет черным (весь канвас в данном случае)
-// или просто меняется цвет заливки 
-        context.fillStyle = 'greenyellow'
-        context.globalCompositeOperation = "destination-over";
-console.log(context.fillStyle)
-
-
-        // context.restore() // Первый restore() извлечет единственное 
-        // сохраненное состояние из стека и применит его. Стек станет пустым.
-        // поэтрму в цикле не сработает
-        context.clearRect(0, 0, canvas.width, canvas.height)
-        context.beginPath();
-
-        //   context.moveTo(start, y) 
-        // переместили  в цикл при первой итерации потому что 
-        // 
-        console.log(y)
-
-        for (let x = start; x < canvas.width; x++) {
-
-            let sin = Math.sin(x / L + time) * 100
-            if (x == start) {
-                context.moveTo(start, y + sin)
-            }
-            context.lineTo(x, y + sin)
-        }
-
-        time += 0.04
-
-
-        context.strokeStyle = 'red'
-        context.stroke()
-        // context.closePath()
-        //  линия не замыкается (волна)
-
-        if (mousex && mousey) {
-
-            context.save()
-            console.log('circle')
-            context.beginPath() //Перед рисованием каждой отдельной фигуры,
-            // которая должна быть независимой от предыдущих.
-            context.globalCompositeOperation = "source-over";
-            // дефолт - накладываются порвех а не под 
-
-            context.strokeStyle = 'gray'
-            context.arc(mousex, mousey, 10, 0, 2 * Math.PI)
-            context.fill()
-            context.stroke()
-
-            //  context.closePath() //пытается завершить текущий путь, соединяя 
-            //текущую точку с начальной точкой этого пути прямой линией.
-            // не обяхателен для линий и кругов и там где есть context.fill
-            // тут не нужен
-            context.restore()
-        }
-        // context.fillRect(0, 0, canvas.width, canvas.height)
-
-
-        requestAnimationFrame(s)
-    }
-    s()
-
-</script> -->
 
 <script>
 
@@ -417,3 +296,129 @@ function fillField() {
 } fillField()
     
 </script>
+
+
+
+
+
+<!-- <script>
+
+    let canvas = document.querySelector('canvas')
+    let context = canvas.getContext('2d')
+
+    function setCanvasSize() {
+
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+
+    } setCanvasSize()
+
+    window.addEventListener('resize', () => {
+        setCanvasSize()
+        setWave()
+    })
+
+    canvas.addEventListener('mousemove', drawCircle)
+
+    let mousex, mousey
+
+    function drawCircle(e) {
+
+        let rect = canvas.getBoundingClientRect()
+
+        mousex = e.clientX - rect.left
+        mousey = e.clientY - rect.top
+
+        console.log(mousex, mousey)
+    }
+
+
+
+
+    let start
+    let L = 200 / 3.14
+
+    function setWave() {
+
+        y = canvas.height / 2
+        start = canvas.width / 2
+
+    }
+
+    setWave()
+
+    let time = 0
+
+    console.log(start)
+
+     context.fillStyle = 'greenyellow'
+
+
+    function s() {
+// при ресайзе канвас автоматически очищает холст 
+// и те пиксели которые были становятя черные
+// поседняя операция фил заливает весь канвас 
+// и при ресайзе он очистится и весь фил 
+// т е его зона - станет черным (весь канвас в данном случае)
+// или просто меняется цвет заливки 
+        context.fillStyle = 'greenyellow'
+        context.globalCompositeOperation = "destination-over";
+console.log(context.fillStyle)
+
+
+        // context.restore() // Первый restore() извлечет единственное 
+        // сохраненное состояние из стека и применит его. Стек станет пустым.
+        // поэтрму в цикле не сработает
+        context.clearRect(0, 0, canvas.width, canvas.height)
+        context.beginPath();
+
+        //   context.moveTo(start, y) 
+        // переместили  в цикл при первой итерации потому что 
+        // 
+        console.log(y)
+
+        for (let x = start; x < canvas.width; x++) {
+
+            let sin = Math.sin(x / L + time) * 100
+            if (x == start) {
+                context.moveTo(start, y + sin)
+            }
+            context.lineTo(x, y + sin)
+        }
+
+        time += 0.04
+
+
+        context.strokeStyle = 'red'
+        context.stroke()
+        // context.closePath()
+        //  линия не замыкается (волна)
+
+        if (mousex && mousey) {
+
+            context.save()
+            console.log('circle')
+            context.beginPath() //Перед рисованием каждой отдельной фигуры,
+            // которая должна быть независимой от предыдущих.
+            context.globalCompositeOperation = "source-over";
+            // дефолт - накладываются порвех а не под 
+
+            context.strokeStyle = 'gray'
+            context.arc(mousex, mousey, 10, 0, 2 * Math.PI)
+            context.fill()
+            context.stroke()
+
+            //  context.closePath() //пытается завершить текущий путь, соединяя 
+            //текущую точку с начальной точкой этого пути прямой линией.
+            // не обяхателен для линий и кругов и там где есть context.fill
+            // тут не нужен
+            context.restore()
+        }
+        // context.fillRect(0, 0, canvas.width, canvas.height)
+
+
+        requestAnimationFrame(s)
+    }
+    s()
+
+</script> -->
