@@ -270,6 +270,20 @@ game.addEventListener('mousemove', (e)=>{
 })
 
 
+game.addEventListener('touchmove', (e) => {
+    e.preventDefault(); // отключаем прокрутку при свайпе
+
+    const touch = e.touches[0];
+    let rect = game.getBoundingClientRect();
+
+    canvasMetrics.x = touch.clientX - rect.left;
+    canvasMetrics.y = touch.clientY - rect.top;
+
+    cursor.x = touch.clientX;
+    cursor.y = touch.clientY;
+}, { passive: false });
+
+
 context.fillRect(0,0, game.width, game.height)
 context.fillStyle = 'rgba(0, 0, 0, 0)'
 
