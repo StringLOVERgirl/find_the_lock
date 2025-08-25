@@ -2,7 +2,13 @@
     let game = document.querySelector('.mini-game')
     let context = game.getContext('2d')
     let h1 = document.querySelector('.task')
-
+    let gamecont = document.querySelector('.gamecont')
+// рефакторинг
+// - собрать объект канвас и контекст 
+// гейм конт вынести в функцию локальной 
+// - убрать h1
+// убрать ресайз флаг
+// триггер флаг в объект с канвасом и контекстом
 
     let cursor = {
     x:0,
@@ -63,8 +69,8 @@ function generateNumber(min,max){
 
     const positiongenerator = () => {
 
-        let maxX = game.width - item.clientWidth
-        let maxY = game.height - item.clientHeight
+        let maxX = game.width - item.clientWidth/2
+        let maxY = game.height - item.clientHeight/2
         let offsetX = generateNumber(0, maxX)
         // Math.floor(Math.random() * (maxX - 0 + 1)) + 0;
         let offsetY = generateNumber(0, maxY)
@@ -96,7 +102,9 @@ element.loop = true;
             let src = generateNumber(0, items[1].length - 1)
             element.src = items[1][src]        }
 
-        document.body.append(element)
+        gamecont.append(element)
+
+        return element
 
     }
 
@@ -120,9 +128,10 @@ game.height = window.innerHeight
 
 setCanvasSize()
 
-addItem()
+// addItem()
 
-let item = document.querySelector('.item')
+let item = addItem()
+
 
 positiongenerator()
 
@@ -188,7 +197,6 @@ game.addEventListener('touchmove', (e) => {
 
 
 context.fillRect(0,0, game.width, game.height)
-context.fillStyle = 'rgba(0, 0, 0, 0)'
 
 
 
