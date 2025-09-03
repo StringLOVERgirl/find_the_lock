@@ -1,6 +1,7 @@
 import { generateNumber, addItem } from "./items.js"
 
 (()=> {
+
 let game = document.querySelector('.mini-game')
 let context = game.getContext('2d')
 
@@ -16,6 +17,11 @@ const canvasMetrics = {
     itemTrigger: {
         x: 0,
         y: 0
+    },
+
+    clearingArea: {
+        offset: 30,
+        width: 60
     }
 }
 
@@ -116,13 +122,19 @@ context.fillRect(0, 0, game.width, game.height)
 
 function fillField() {
 
+    let offset = canvasMetrics.clearingArea.offset
+    let width = canvasMetrics.clearingArea.width
+
     let cursor = canvasMetrics.cursor
     let itemTrigger = canvasMetrics.itemTrigger
 
     if (cursor.x) {
-        context.clearRect(cursor.x - 30,
-            cursor.y - 30,
-            60, 60)
+        context.clearRect(
+            cursor.x - offset,
+            cursor.y - offset,
+            width, 
+            width
+            )
     }
 
     // логика перезапуска
@@ -140,4 +152,5 @@ function fillField() {
     requestAnimationFrame(fillField)
 
 } fillField()
+
 })()
