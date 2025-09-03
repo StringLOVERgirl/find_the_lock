@@ -216,8 +216,10 @@ function fillField() {
         item.classList.add('showOn')
 
         setTimeout(()=>{
+            context.fillStyle = 'black'
+            item.remove()
+            flags.trigger = !flags.trigger
            context.fillRect(0,0, game.width, game.height)
-           setCanvasSize()
            item = addItem()
            positiongenerator()
            setTriggerDistance()
