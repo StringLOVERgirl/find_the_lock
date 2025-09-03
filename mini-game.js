@@ -214,6 +214,15 @@ function fillField() {
       !flags.trigger) {
         flags.trigger = !flags.trigger
         item.classList.add('showOn')
+
+        setTimeout(()=>{
+           context.fillRect(0,0, game.width, game.height)
+           setCanvasSize()
+           item = addItem()
+           positiongenerator()
+           setTriggerDistance()
+        },5000)
+
     } 
 
 
