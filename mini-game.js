@@ -1,12 +1,19 @@
 import { generateNumber, addItem } from "./items.js"
-
-(()=> {
-
-let game = document.querySelector('.mini-game')
-let context = game.getContext('2d')
+import { CanasMethods } from "./metrics_logic.js"
+import { Playlogic } from "./playlogic.js"
 
 
-const canvasMetrics = {
+class Canvas extends CanasMethods(Playlogic) {
+
+    constructor(){
+        super()
+        this.game = document.querySelector('.mini-game')
+        this.context = this.game.getContext('2d')
+    
+        this.item = undefined
+
+
+ this.canvasMetrics = {
     cursor: {
         x: 0,
         y: 0
@@ -25,49 +32,33 @@ const canvasMetrics = {
     }
 }
 
+    }
 
-const positiongenerator = () => {
 
-    let maxX = game.width - item.clientWidth / 2
-    let maxY = game.height - item.clientHeight / 2
 
-    let offsetX = generateNumber(0, maxX)
-    let offsetY = generateNumber(0, maxY)
+ setMetrics() {
+    console.log(1)
+    super.positiongenerator(this.game, this.item)
+    super.setTriggerDistance(this.item , this.canvasMetrics)
+}
 
-    document.documentElement.style.setProperty('--left', offsetX + 'px')
-    document.documentElement.style.setProperty('--top', offsetY + 'px')
+
+init(context, game){
+    super.setCanvasSize(this.game)
+
+    this.item = addItem()
+    
+    this.setMetrics()
+
+    context.fillStyle = '#3A0519'
+
+    context.fillRect(0, 0, game.width, game.height)
+
 
 }
 
 
-function setTriggerDistance() {
-
-    let itemrect = item.getBoundingClientRect()
-
-    canvasMetrics.itemTrigger.x = itemrect.left
-    canvasMetrics.itemTrigger.y = itemrect.top
-
-}
-
-
-
-function setCanvasSize() {
-    game.width = window.innerWidth
-    game.height = window.innerHeight
-}
-
-function setMetrics() {
-    positiongenerator()
-    setTriggerDistance()
-}
-
-setCanvasSize()
-
-let item = addItem()
-
-setMetrics()
-
-context.fillStyle = '#3A0519'
+setListeners(context, canvasMetrics, game){
 
 window.addEventListener('resize', () => {
 
@@ -77,9 +68,9 @@ window.addEventListener('resize', () => {
     const newWidth = window.innerWidth;
     const newHeight = window.innerHeight;
 
-    setCanvasSize()
+    super.setCanvasSize(this.game)
 
-    setMetrics()
+    this.setMetrics()
 
     context.fillStyle = '#3A0519'
 
@@ -90,16 +81,6 @@ window.addEventListener('resize', () => {
     context.fillRect(0, 0, newWidth, newHeight)
 
 })
-
-function restart() {
-    context.fillStyle = 'mistyrose'
-    item.remove()
-    canvasMetrics.trigger = !canvasMetrics.trigger
-    context.fillRect(0, 0, game.width, game.height)
-    item = addItem()
-    setMetrics()
-}
-
 
 
 game.addEventListener('mousemove', (e) => {
@@ -117,40 +98,22 @@ game.addEventListener('touchmove', (e) => {
     canvasMetrics.cursor.y = touch.clientY;
 }, { passive: false });
 
-context.fillRect(0, 0, game.width, game.height)
+}
+
+ restart(context, canvasMetrics, game) {
+    context.fillStyle = 'mistyrose'
+    this.item.remove()
+    canvasMetrics.trigger = !canvasMetrics.trigger
+    context.fillRect(0, 0, game.width, game.height)
+    this.item = addItem()
+    this.setMetrics()
+}
 
 
-function fillField() {
+}
 
-    let offset = canvasMetrics.clearingArea.offset
-    let width = canvasMetrics.clearingArea.width
-
-    let cursor = canvasMetrics.cursor
-    let itemTrigger = canvasMetrics.itemTrigger
-
-    if (cursor.x) {
-        context.clearRect(
-            cursor.x - offset,
-            cursor.y - offset,
-            width, 
-            width
-            )
-    }
-
-    // логика перезапуска
-    if (cursor.x > itemTrigger.x
-        && cursor.y > itemTrigger.y
-        && cursor.x < itemTrigger.x + item.clientWidth
-        && cursor.y < itemTrigger.y + item.clientHeight
-        && !canvasMetrics.trigger) {
-
-        canvasMetrics.trigger = !canvasMetrics.trigger
-        item.classList.add('showOn')
-        setTimeout(restart, 4000)
-    }
-
-    requestAnimationFrame(fillField)
-
-} fillField()
-
-})()
+let start = new Canvas()
+console.log(start.context)
+start.init(start.context, start.game, start.item)
+start.setListeners(start.context, start.canvasMetrics, start.game)
+start.fillField(start.canvasMetrics, start.item, start.context)
