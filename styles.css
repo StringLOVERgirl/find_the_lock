@@ -196,7 +196,8 @@
     .counterCont {
       top: unset;
       bottom: 0.3em;
-      left: 3vw;
+      left: 0;
       width: 17vw;
+      right: unset;
     }
   }
