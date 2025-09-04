@@ -5,6 +5,7 @@ import { setTheme } from "./themes.js"
 
 let game = document.querySelector('.mini-game')
 let context = game.getContext('2d')
+let counter = document.querySelector('.counter')
 
 
 const canvasMetrics = {
@@ -32,7 +33,9 @@ const canvasMetrics = {
         height: game.height,
         gameCenterX: game.width/2,
         gameCenterY: game.height/2
-    }
+    },
+
+    counter: 0
 }
 
 
@@ -87,6 +90,7 @@ window.addEventListener('resize', () => {
 console.log(canvasMetrics.gameSize)
     // // Сохраняем содержимое как изображение
     // const imageData = context.getImageData(0, 0, oldWidth, oldHeight);
+    context.clearRect(0, 0, game.width, game.height)
 
     const newWidth = window.innerWidth;
     const newHeight = window.innerHeight;
@@ -166,9 +170,13 @@ function fillField() {
         && cursor.y < itemTrigger.y + item.clientHeight
         && !canvasMetrics.trigger) {
 
+        canvasMetrics.counter++
         canvasMetrics.trigger = !canvasMetrics.trigger
         item.classList.add('showOn')
-        setTimeout(restart, 4000)
+        setTimeout(()=>{
+            restart()
+            counter.textContent = canvasMetrics.counter
+        }, 4000)
     }
 
     requestAnimationFrame(fillField)

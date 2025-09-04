@@ -2,11 +2,11 @@ import { generateNumber } from "./items.js";
 
 
 export const themes = [
-    ['0f0c29', '302b63', '24243e', '767a9e'],
+    ['0f0c29', '302b63', '24243e', '363951'],
     ['654ea3', 'eaafc8', '1a1026'],
     ['ff5f6d', 'ffc371', '3A0519'],
     ['dd3e54', '6be585', '202824'],
-    ['333333', 'dd1818', 'ff5151'],
+    ['333333', '863535', '984a4a'],
     ['1e130c', '9a8478', '967062'],
     ['1F1C2C', '928DAB', '0f0d19']
 ]
@@ -31,7 +31,7 @@ export function setTheme(context, game, metrics){
 
         document.body.style.setProperty('--bg', '#'+themes[theme][2]);
     } 
-    
+
     context.clearRect(0,0,game.width, game.height)
     context.fillStyle = gradient
     context.fillRect(0,0,game.width, game.height)

@@ -135,3 +135,12 @@
     overflow: hidden;
     perspective: 500px;
   }
+
+  .counterCont {
+    position: absolute;
+    right: 1em;
+    top: 0.5em;
+    color: white;
+    font-size: 1.2em;
+    font-family:  Helvetica, sans-serif;
+  }
