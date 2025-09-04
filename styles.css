@@ -4,10 +4,6 @@
     /* --bg: 'white' */
   }
 
-  html {
-    height: 10svh;
-
-  }
 
 
   .item {
@@ -27,8 +23,8 @@
   body {
     background-color: var(--bg);
     overflow: hidden;
+    height: 70svh;
     width: 100vw;
-    overflow: hidden;
     /* background-color: black; */
   }
 
@@ -164,6 +160,7 @@
 
     h1 {
       font-size: 3.5em;
+      text-shadow: unset;
     }
 
     h1::after {
