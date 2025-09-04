@@ -139,6 +139,8 @@ game.addEventListener('touchmove', (e) => {
 function restart() { 
     item.remove() 
     canvasMetrics.trigger = !canvasMetrics.trigger 
+    context.clearRect(0, 0, game.width, game.height)
+
     context.fillRect(0, 0, game.width, game.height)
      item = addItem() 
      setMetrics()
