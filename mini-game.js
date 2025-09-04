@@ -179,6 +179,8 @@ function fillField() {
             restart()
             context.clearRect(0, 0, game.width, game.height)
             counter.textContent = canvasMetrics.counter
+            context.fillRect(0, 0, game.width, game.height)
+
         }, 4000)
     }
 
