@@ -21,9 +21,7 @@
   /* #2E1437 bg under*/
   /* #948E99 */
   body {
-    background-color: var(--bg);
     overflow: hidden;
-    height: 70svh;
     width: 100vw;
     /* background-color: black; */
   }
@@ -137,10 +135,12 @@
   }
 
   .gamecont{
-    height: 100lvh;
+    height: 100svh;
     width: 100vw;
     overflow: hidden;
     perspective: 500px;
+    background-color: var(--bg);
+
   }
 
   .counterCont {
@@ -160,7 +160,6 @@
 
     h1 {
       font-size: 3.5em;
-      text-shadow: unset;
     }
 
     h1::after {
