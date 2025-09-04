@@ -30,7 +30,7 @@
   body {
     background-color: var(--bg);
     overflow: hidden;
-    height: 100vh;
+    height: 100svh;
     width: 100vw;
     overflow-x: hidden;
     /* background-color: black; */
@@ -161,6 +161,3 @@
     pointer-events: none;
   }
 
-  canvas {
-    height: 100lvh;
-  }
