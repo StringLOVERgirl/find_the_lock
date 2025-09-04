@@ -177,6 +177,7 @@ function fillField() {
         item.classList.add('showOn')
         setTimeout(()=>{
             restart()
+            context.clearRect(0, 0, game.width, game.height)
             counter.textContent = canvasMetrics.counter
         }, 4000)
     }
