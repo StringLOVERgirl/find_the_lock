@@ -22,7 +22,7 @@
   body {
     background-color: var(--bg);
     overflow: hidden;
-    height: 100svh;
+    height: 90svh;
     width: 100vw;
     overflow: hidden;
     /* background-color: black; */
@@ -164,11 +164,12 @@
 
     h1::after {
       font-size: 1em;
+      top: 10%;
     }
 
     .counterCont {
       top: unset;
-      bottom: 2.05em;
+      bottom: 4em;
       left: 1em;
     }
   }
