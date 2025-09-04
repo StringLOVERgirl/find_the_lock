@@ -100,8 +100,7 @@ console.log(canvasMetrics.gameSize)
     setMetrics()
 
     // овтечает чтобы не было квадрата очищенного у гранциы
-    canvasMetrics.cursor.x = undefined
-    canvasMetrics.cursor.y = undefined
+    cleanUpCursor()
 
     context.fillStyle = canvasMetrics.gradient
     context.fillRect(0, 0, newWidth, newHeight)
@@ -125,22 +124,28 @@ game.addEventListener('mousemove', (e) => {
 })
 
 
+if (window.innerHeight < 500 || window.innerWidth < 600){
 game.addEventListener('touchmove', (e) => {
     e.preventDefault(); // отключаем прокрутку при свайпе
 
     const touch = e.touches[0];
+    rotate(e)
 
     canvasMetrics.cursor.x = touch.clientX;
     canvasMetrics.cursor.y = touch.clientY;
 }, { passive: false });
+}
 
+function cleanUpCursor(){
+    canvasMetrics.cursor.x = undefined
+    canvasMetrics.cursor.y = undefined
+}
 
 
 function restart() { 
     item.remove() 
     canvasMetrics.trigger = !canvasMetrics.trigger 
-    canvasMetrics.cursor.x = undefined
-    canvasMetrics.cursor.y = undefined
+    cleanUpCursor()
     context.fillRect(0, 0, game.width, game.height)
      item = addItem() 
      setMetrics()
@@ -175,11 +180,9 @@ function fillField() {
         canvasMetrics.counter++
         canvasMetrics.trigger = !canvasMetrics.trigger
         item.classList.add('showOn')
-        canvasMetrics.cursor.x = undefined
-        canvasMetrics.cursor.y = undefined
+        cleanUpCursor()
         setTimeout(()=>{
-            canvasMetrics.cursor.x = undefined
-            canvasMetrics.cursor.y = undefined
+            cleanUpCursor()
             restart()
             counter.textContent = canvasMetrics.counter
         }, 4000)
