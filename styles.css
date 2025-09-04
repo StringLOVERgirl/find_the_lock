@@ -4,6 +4,11 @@
     /* --bg: 'white' */
   }
 
+  html {
+    height: 10svh;
+
+  }
+
 
   .item {
     position: absolute;
@@ -22,7 +27,6 @@
   body {
     background-color: var(--bg);
     overflow: hidden;
-    height: 90svh;
     width: 100vw;
     overflow: hidden;
     /* background-color: black; */
