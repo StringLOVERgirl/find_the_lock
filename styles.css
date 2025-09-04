@@ -134,6 +134,7 @@
     z-index: 9999; 
     color: white; /* Цвет текста процента */
     transition: opacity 0.5s ease-out;
+    font-family: futura light;
   }
 
   #preloader.hidden {
