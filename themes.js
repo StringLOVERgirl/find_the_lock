@@ -31,6 +31,7 @@ export function setTheme(context, game, metrics){
 
         document.body.style.setProperty('--bg', '#'+themes[theme][2]);
     } 
+    
     context.clearRect(0,0,game.width, game.height)
     context.fillStyle = gradient
     context.fillRect(0,0,game.width, game.height)

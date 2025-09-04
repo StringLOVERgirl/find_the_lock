@@ -95,8 +95,6 @@ console.log(canvasMetrics.gameSize)
 
     setMetrics()
 
-    // context.fillStyle = '#2E1437'
-
     // овтечает чтобы не было квадрата очищенного у гранциы
     canvasMetrics.cursor.x = undefined
     canvasMetrics.cursor.y = undefined
@@ -106,21 +104,12 @@ console.log(canvasMetrics.gameSize)
 
 })
 
-function restart() {
-    item.remove()
-    canvasMetrics.trigger = !canvasMetrics.trigger
-    context.fillRect(0, 0, game.width, game.height)
-    item = addItem()
-    setMetrics()
-    setTheme(context, game, canvasMetrics)
-}
-
 
 function rotate(event){
     let x = (event.clientX - canvasMetrics.gameSize.centerX) * 0.008
     let y = (event.clientY - canvasMetrics.gameSize.centerY) * 0.008
-    document.documentElement.style.setProperty('--rotateX', -x + 'deg')
-    document.documentElement.style.setProperty('--rotateY', -y + 'deg')
+    document.documentElement.style.setProperty('--rotateX', x + 'deg')
+    document.documentElement.style.setProperty('--rotateY', y + 'deg')
 
 }
 
@@ -141,7 +130,16 @@ game.addEventListener('touchmove', (e) => {
     canvasMetrics.cursor.y = touch.clientY;
 }, { passive: false });
 
-context.fillRect(0, 0, game.width, game.height)
+
+
+function restart() { 
+    item.remove() 
+    canvasMetrics.trigger = !canvasMetrics.trigger 
+    context.fillRect(0, 0, game.width, game.height)
+     item = addItem() 
+     setMetrics()
+     setTheme(context, game, canvasMetrics) }
+
 
 
 function fillField() {
@@ -175,18 +173,8 @@ function fillField() {
 
     requestAnimationFrame(fillField)
 
-} fillField()
+} 
+fillField()
 
 })()
 
-class A {
-    getb = this.b
-}
-
-class B extends A {
-b(){
-    console.log('b')
-}
-}
-let a = new B
-a.getb()
