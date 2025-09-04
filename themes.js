@@ -30,6 +30,7 @@ export function setTheme(context, game, metrics){
         gradient.addColorStop(1,   '#'+themes[theme][1]); // цвет справа
 
         document.body.style.setProperty('--bg', '#'+themes[theme][2]);
+        
     } 
 
     context.clearRect(0,0,game.width, game.height)

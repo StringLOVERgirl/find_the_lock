@@ -89,6 +89,9 @@
     height: fit-content;
     line-height: 1;
     margin-left:0.05em;
+    height: 0.08em;
+    border: solid 1px;
+    border-radius: 18px;
   }
 
   #loader {
@@ -142,7 +145,7 @@
     width: 100vw;
     overflow: hidden;
     perspective: 500px;
-    background-color: var(--bg);
+    background: var(--bg);
 
   }
 
@@ -154,8 +157,22 @@
     font-size: 1.2em;
     font-family:  futura light;
     pointer-events: none;
+    border-radius: 35px;
+    /* border: solid 1px var(--bg); */
+    width: 4em;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    background: var(--bg);
+
   }
 
+
+ 
+
+  h2 {
+    padding-left: 1vw;
+  }
   @media (max-width: 600px) {
     .item {
       height: 13vh;
@@ -163,6 +180,10 @@
 
     h1 {
       font-size: 3.5em;
+    }
+
+    h2 {
+      padding-left: 2.5vw;
     }
 
     h1::after {
@@ -174,5 +195,6 @@
       top: unset;
       bottom: 0.3em;
       left: 0.5em;
+      width: 17vw;
     }
   }
