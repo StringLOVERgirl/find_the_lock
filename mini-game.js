@@ -139,8 +139,8 @@ game.addEventListener('touchmove', (e) => {
 function restart() { 
     item.remove() 
     canvasMetrics.trigger = !canvasMetrics.trigger 
-    context.clearRect(0, 0, game.width, game.height)
-
+    canvasMetrics.cursor.x = undefined
+    canvasMetrics.cursor.y = undefined
     context.fillRect(0, 0, game.width, game.height)
      item = addItem() 
      setMetrics()
@@ -175,12 +175,13 @@ function fillField() {
         canvasMetrics.counter++
         canvasMetrics.trigger = !canvasMetrics.trigger
         item.classList.add('showOn')
+        canvasMetrics.cursor.x = undefined
+        canvasMetrics.cursor.y = undefined
         setTimeout(()=>{
+            canvasMetrics.cursor.x = undefined
+            canvasMetrics.cursor.y = undefined
             restart()
-            context.clearRect(0, 0, game.width, game.height)
             counter.textContent = canvasMetrics.counter
-            context.fillRect(0, 0, game.width, game.height)
-
         }, 4000)
     }
 

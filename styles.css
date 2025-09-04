@@ -20,6 +20,10 @@
     .item {
       height: 13vh;
     }
+
+    .h1 {
+      font-size: 3.5em;
+    }
   }
   /* #2E1437 bg under*/
   /* #948E99 */
@@ -82,6 +86,16 @@
     overflow: visible;
     will-change: transform;
     transform: rotateX(var(--rotateY)) rotateY(var(--rotateX)) ;
+    position: relative;
+  }
+
+  h1::after {
+    content: '*';
+    position: absolute;
+    font-size: 2em;
+    height: fit-content;
+    line-height: 1;
+    margin-left:0.05em;
   }
 
   #loader {
