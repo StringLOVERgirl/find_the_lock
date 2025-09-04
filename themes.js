@@ -3,12 +3,12 @@ import { generateNumber } from "./items.js";
 
 export const themes = [
     ['0f0c29', '302b63', '24243e', '363951'],
-    ['654ea3', 'eaafc8', '1a1026'],
-    ['ff5f6d', 'ffc371', '3A0519'],
-    ['dd3e54', '6be585', '202824'],
+    ['654ea3', 'eaafc8', 'a6859df5'],
+    ['F7F8F8', 'ACBB78', 'd4fbc5c7'],
+    ['fffbd5', 'b20a2c', 'f6fed4ba'],
     ['333333', '863535', '984a4a'],
     ['1e130c', '9a8478', '967062'],
-    ['1F1C2C', '928DAB', '0f0d19']
+    ['1F1C2C', '928DAB', '676377f5']
 ]
 
 
