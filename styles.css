@@ -16,15 +16,7 @@
     pointer-events: none;
   }
 
-  @media (max-width: 600px) {
-    .item {
-      height: 13vh;
-    }
 
-    .h1 {
-      font-size: 3em;
-    }
-  }
   /* #2E1437 bg under*/
   /* #948E99 */
   body {
@@ -161,3 +153,12 @@
     pointer-events: none;
   }
 
+  @media (max-width: 600px) {
+    .item {
+      height: 13vh;
+    }
+
+    h1 {
+      font-size: 3.5em;
+    }
+  }
